@@ -8,7 +8,7 @@ df = pd.read_csv('enter addr of csv file')
 
 
 # %% Drop first row if qualtrics added an additional row of header information
-df = df.drop(index=1)
+df = df.drop(index=[0,1])
 
 #%% Check IP address column. Adjust for actual dataset IP Address column name
 df.IPAddress.head(10)
@@ -23,4 +23,3 @@ blocked_ips = check_ips_against_blocklist(df, 'IPAddress', ip_block_lists)
 blocked_ips_percentage = len(blocked_ips) / len(df)
 print(f"Percentage of IPs that are blocked: {blocked_ips_percentage*100:.2f}%")
 
-# %%
